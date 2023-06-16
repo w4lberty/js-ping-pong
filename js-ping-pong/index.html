@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ping-Pong</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <canvas></canvas>
+    <script>
+        const canvasEl = document.querySelector("canvas"),
+        canvasCtx = canvasEl.getContext("2d")
+
+        const lineWidth = 15
+
+        function setup() {
+            canvasEl.width = canvasCtx.width = window.innerWidth
+            canvasEl.height = canvasCtx.height = window.innerHeight
+        }
+
+        function draw() {
+            // campo
+            canvasCtx.fillStyle = "#286047"
+            canvasCtx.fillRect(0, 0, window.innerWidth, window.innerHeight)
+
+            canvasCtx.fillStyle = "#ffffff"
+
+            // linha central
+            canvasCtx.fillRect(window.innerWidth / 2 - lineWidth / 2, 0, lineWidth, window.innerHeight)
+
+            // raquete esquerda
+            canvasCtx.fillRect(10, window.innerHeight / 2, lineWidth, 200)
+
+            // raquete esquerda
+            canvasCtx.fillRect(window.innerWidth - lineWidth - 10, window.innerHeight / 2, lineWidth, 200)
+
+            // bola
+            canvasCtx.beginPath()
+            canvasCtx.arc(200, 500, 20, 0, 2 * Math.PI, false)
+            canvasCtx.fill()
+
+            // placar
+            canvasCtx.font = "bold 220px Arial"
+            canvasCtx.textAlign = "center"
+            canvasCtx.textBaseline = "top"
+            canvasCtx.fillStyle = "#013410"
+            canvasCtx.fillText('3', window.innerWidth / 4, window.innerHeight / 2 - 110)
+            canvasCtx.fillText('1', window.innerWidth / 4 + window.innerWidth / 2 , window.innerHeight / 2 - 110)
+        }
+
+        setup()
+        draw()
+    </script>
+</body>
+</html>
